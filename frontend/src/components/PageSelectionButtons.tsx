@@ -11,13 +11,10 @@ const PageSelectionButtons: React.FC<PageSelectionButtonsProps> = ({
   setActivePage,
 }) => {
 
-    const isMobileView = useIsMobileView(768);
-    const buttonWidth = isMobileView ? "w-3/4" : "w-full";
-
   return (
-    <div className="flex flex-col  justify-center items-center w-full">
+    <div className="flex flex-col  justify-center items-center w-full m-0">
       <button
-        className={`${buttonWidth} py-2 mb-2 rounded transition duration-300 shadow-lg ${
+        className={`w-[90%] py-2 mb-2 rounded transition duration-300 shadow-lg ${
           activePage === "create"
             ? "bg-blue-500 text-white"
             : "bg-white text-black hover:bg-blue-400 hover:text-white"
@@ -27,7 +24,7 @@ const PageSelectionButtons: React.FC<PageSelectionButtonsProps> = ({
         Create Recommendations
       </button>
       <button
-        className={`${buttonWidth} py-2 rounded transition duration-300 shadow-lg ${
+        className={`w-[90%] py-2 rounded transition duration-300 shadow-lg ${
           activePage === "get"
             ? "bg-red-500 text-white"
             : "bg-white text-black hover:bg-red-400 hover:text-white"

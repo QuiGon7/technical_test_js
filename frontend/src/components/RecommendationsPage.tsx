@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import IdInput from "./IdInput";
 import { handleIdChange } from "@/utils/handleIdChange";
 import { fetchRecommendations } from "@/utils/api";
-import RecommendationsList from "./RecomendationsList";
+import RecommendationsList from "./RecommendationsList";
 
 
 
@@ -24,7 +24,7 @@ const RecommendationsPage: React.FC = () => {
       setRecommendations(result);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      setError("Failed to fetch recommendations. Please try again.");
+      setError(`No recommendations found for user_id ${id}`)
     }
   };
 

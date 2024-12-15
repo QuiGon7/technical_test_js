@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useIsMobileView = (maxWidth: number = 720) => {
+export const useIsMobileView = (maxWidth: number = 768) => {
   const [isMobileView, setIsMobileView] = useState(false);
 
   useEffect(() => {
