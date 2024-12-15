@@ -1,4 +1,3 @@
-import { useIsMobileView } from "@/hooks/useIsMobileView";
 import React from "react";
 
 interface PageSelectionButtonsProps {
