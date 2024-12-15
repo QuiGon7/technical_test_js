@@ -6,13 +6,13 @@
       "body": {
         "type": "JSON",
         "json": {
-          "preferences": ["science fiction", "artificial intelligence", "space exploration"]
+          "preferences": ["fantasy", "magic", "adventure"]
         }
       }
     },
     "httpResponse": {
       "statusCode": 200,
-      "body": "{\"recommendations\": [\"Book: 'Dune' by Frank Herbert\", \"Article: 'The Future of AI in Space Travel'\", \"Movie: 'Interstellar'\"]}"
+      "body": "{\"recommendations\": [\"Book: 'Harry Potter and the Sorcerer's Stone' by J.K. Rowling\", \"Movie: 'The Lord of the Rings' Trilogy\", \"Game: 'The Legend of Zelda'\"]}"
     },
     "times": {
       "unlimited": true
@@ -25,13 +25,17 @@
       "body": {
         "type": "JSON",
         "json": {
-          "preferences": ["fantasy", "magic", "adventure"]
+          "preferences": [
+            "science fiction",
+            "artificial intelligence",
+            "space exploration"
+          ]
         }
       }
     },
     "httpResponse": {
       "statusCode": 200,
-      "body": "{\"recommendations\": [\"Book: 'Harry Potter and the Sorcerer's Stone' by J.K. Rowling\", \"Movie: 'The Lord of the Rings' Trilogy\", \"Game: 'The Legend of Zelda'\"]}"
+      "body": "{\"recommendations\": [\"Book: 'Dune' by Frank Herbert\", \"Article: 'The Future of AI in Space Travel'\", \"Movie: 'Interstellar'\"]}"
     },
     "times": {
       "unlimited": true

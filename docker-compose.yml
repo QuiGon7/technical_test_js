@@ -1,24 +1,59 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  app:
-    build: .
-    command: npm run dev
+
+  frontend:
+    build:
+      context: ./frontend 
+      dockerfile: Dockerfile
+    container_name: frontend_test_task
     volumes:
-      - .:/usr/src/app
+      - ./frontend:/usr/src/app 
     ports:
-      - "8000:8000"
+      - "3000:3000" 
+    depends_on:
+      - backend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8008 
+    command: "npm run dev" 
+    working_dir: /usr/src/app
+
+  backend:
+    build:
+      context: ./src 
+      dockerfile: Dockerfile 
+    container_name: app_test_task
+    volumes:
+      - ./src:/usr/src/app 
+    ports:
+      - "8008:8008"
     depends_on:
       - wiremock
       - db
-
+    environment:
+      - DATABASE_URL=mongodb://admin:supersecretpassword@db:27017/mydatabase?authSource=admin
+      - WIREMOCK_URL=http://wiremock:8080
+      
   wiremock:
     image: wiremock/wiremock:2.35.0
+    container_name: wiremock_test_task
     ports:
       - "8080:8080"
     volumes:
       - ./wiremock:/home/wiremock
     command: --verbose
 
+  db:
+    image: mongo
+    container_name: mongo_test_task
+    ports:
+      - "${MONGO_PORT}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+
 volumes:
   mongo_data:
+

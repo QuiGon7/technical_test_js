@@ -1,10 +1,11 @@
 {
+  "priority": 1,
   "request": {
     "method": "POST",
     "url": "/llm/generate",
     "bodyPatterns": [
       {
-        "matchesJsonPath": "$[?(@.preferences == ['fantasy', 'magic', 'adventure'])]"
+        "matchesJsonPath": "$[?(@.preferences contains 'fantasy' || @.preferences contains 'magic' || @.preferences contains 'adventure')]"
       }
     ]
   },

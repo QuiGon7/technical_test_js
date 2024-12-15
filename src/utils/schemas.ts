@@ -1,4 +1,33 @@
-// src/utils/schemas.ts
+import { body, ValidationChain } from "express-validator";
+
+export const validateRecommendations: ValidationChain[] = [
+  body("user_id")
+    .isString()
+    .withMessage("user_id is required and must be a non-empty string")
+    .bail()
+    .trim()
+    .notEmpty()
+    .withMessage("user_id is required and must be a non-empty string"),
+  body("preferences")
+    .isArray({ min: 1 })
+    .withMessage("preferences must be a non-empty array"),
+  body("preferences.*")
+    .isString()
+    .withMessage("Each preference must be a non-empty string")
+    .bail()
+    .trim()
+    .notEmpty()
+    .withMessage("Each preference must be a non-empty string"),
+];
+
+export interface RecommendationsRequest {
+  user_id: string;
+  preferences: string[];
+}
+
+export interface GenerateRecommendationsResponse {
+  data: { recommendations: string[] };
+}
 
 // TODO: Define request and response validation schemas.
 

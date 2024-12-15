@@ -1,6 +1,4 @@
-# Dockerfile
-
-FROM node
+FROM node:18
 
 WORKDIR /usr/src/app
 
@@ -12,4 +10,6 @@ COPY . .
 
 RUN npm run build
 
-CMD ["node", "dist/app.js"]
+EXPOSE 8008
+
+CMD ["npm", "start"]
